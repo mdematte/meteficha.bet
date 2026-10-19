@@ -35,7 +35,7 @@ function RootComponent() {
       <head>
         <meta charSet="utf-8" />
       </head>
-      <body className="min-h-screen bg-background text-foreground">
+      <body className="min-h-screen bg-background text-foreground selection:bg-primary/30">
         <DemoBanner />
         <Header />
         <Outlet />

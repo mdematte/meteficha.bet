@@ -17,12 +17,12 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link to="/" className="flex items-center gap-2.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg glow-primary" style={{ background: "var(--gradient-brand)" }}>
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg glow-primary" style={{ background: "var(--gradient-primary)" }}>
             <Gem className="text-primary-foreground" size={16} />
           </span>
           <span className="flex flex-col leading-none">
             <span className="text-base font-extrabold uppercase tracking-tight text-foreground sm:text-lg">
-              METEFICHA<span className="text-gradient-brand">.BET</span>
+              METEFICHA<span className="cp-gradient-text">.BET</span>
             </span>
             <span className="hidden text-[10px] font-medium uppercase tracking-[0.14em] text-muted-foreground sm:block">
               Entre no jogo. Explore outro nível.
@@ -59,7 +59,8 @@ export function Header() {
           ) : (
             <Link
               to="/auth"
-              className="btn-brand flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-semibold"
+              className="flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+              style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-glow-blue)" }}
             >
               <LogIn size={16} /> Entrar
             </Link>

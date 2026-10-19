@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { Dices, Eye, EyeOff, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Gem, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import authBg from "@/assets/auth-background.webp";
@@ -65,15 +65,15 @@ function AuthPage() {
       <div className="relative hidden lg:block">
         <img
           src={authBg}
-          alt="Fundo escuro de cassino com luzes verdes e douradas e silhuetas de fichas e cartas"
+          alt="Fundo cyberpunk escuro com luzes neon azul e roxa e silhuetas abstratas de fichas e cartas"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-background via-background/40 to-transparent p-10">
+        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-background via-background/50 to-transparent p-10">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-demo/20 px-3 py-1 text-xs font-semibold text-demo">
             Conta 100% demonstrativa
           </span>
           <h2 className="mt-3 text-2xl font-bold text-foreground">
-            Seu saldo virtual te espera.
+            Entre no jogo. <span className="cp-gradient-text">Explore outro nivel.</span>
           </h2>
           <p className="mt-2 max-w-sm text-sm text-muted-foreground">
             Cadastre-se gratis e explore cassino e sportsbook simulados, sem
@@ -84,9 +84,13 @@ function AuthPage() {
 
       <div className="flex items-center justify-center px-4 py-12 sm:px-8">
         <div className="w-full max-w-sm">
-          <div className="flex items-center gap-2 text-lg font-bold text-foreground">
-            <Dices className="text-primary" size={22} />
-            Meteficha<span className="text-primary">.bet</span>
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg glow-primary" style={{ background: "var(--gradient-primary)" }}>
+              <Gem className="text-primary-foreground" size={16} />
+            </span>
+            <span className="text-lg font-extrabold uppercase tracking-tight text-foreground">
+              METEFICHA<span className="cp-gradient-text">.BET</span>
+            </span>
           </div>
 
           <div className="mt-6 flex rounded-md border border-border p-1">
@@ -95,9 +99,10 @@ function AuthPage() {
               onClick={() => setMode("login")}
               className={`flex-1 rounded-sm py-2 text-sm font-semibold transition-colors ${
                 mode === "login"
-                  ? "bg-primary text-primary-foreground"
+                  ? "text-primary-foreground"
                   : "text-muted-foreground"
               }`}
+              style={mode === "login" ? { background: "var(--gradient-primary)" } : undefined}
             >
               Entrar
             </button>
@@ -106,9 +111,10 @@ function AuthPage() {
               onClick={() => setMode("register")}
               className={`flex-1 rounded-sm py-2 text-sm font-semibold transition-colors ${
                 mode === "register"
-                  ? "bg-primary text-primary-foreground"
+                  ? "text-primary-foreground"
                   : "text-muted-foreground"
               }`}
+              style={mode === "register" ? { background: "var(--gradient-primary)" } : undefined}
             >
               Criar conta demo
             </button>
@@ -171,7 +177,8 @@ function AuthPage() {
             <button
               type="submit"
               disabled={loading}
-              className="mt-2 flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60 transition-colors"
+              className="mt-2 flex items-center justify-center gap-2 rounded-md px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+              style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-glow-blue)" }}
             >
               {loading && <Loader2 className="animate-spin" size={16} />}
               {mode === "login" ? "Entrar" : "Criar conta demo"}
